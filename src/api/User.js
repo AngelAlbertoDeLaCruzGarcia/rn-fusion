@@ -68,3 +68,20 @@ export async function updateUserApi(auth,data){
         return null;
     }
 }
+export async function updatePhotoApi(auth,data){
+    console.log(data);
+    try {
+        const url = `${API_URL}/upload`;
+        const params = {
+            method: "POST",
+            body: data,
+            onUploadProgress: (progress) => console.log(progress)
+        };
+        const response = await fetch(url,params);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}

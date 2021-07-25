@@ -32,7 +32,6 @@ export default function App() {
   useEffect( () => {
     ( async () => {
       let controller = new AbortController();
-      let signal = controller.signal;
       const token = await getTokenApi();
       if(token){
         setAuth({
@@ -41,23 +40,8 @@ export default function App() {
         });
       }else
         setAuth(null);
-      let check = false, i = 0;
-      const notifi = await GetNotificationApi(auth,signal);
       controller.abort();
-      if( size(notifi) >= 0 ){
-        console.log("entro");
-        for(i = 0; i < size(notifi) ; i++){
-          if(notifi[i].product.quantity > 0){
-            check = true;
-          }
-        }
-        if(check){
-          setNoti(notifi);
-          setVisible(true);
-          console.log(notifi);
-
-        }
-      }
+      setInterval(() => {searchNoti(token,jwtDecode(token).id)},10000)
       registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
       // This listener is fired whenever a notification is received while the app is foregrounded
       notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -95,7 +79,28 @@ export default function App() {
       logout,
     }),[auth]
   );
-
+  async function searchNoti(token,idUser)
+  {
+    let controller = new AbortController();
+    let signal = controller.signal;
+    let check = false, i = 0;
+    const notifi = await GetNotificationApi(token,idUser,signal);
+    controller.abort();
+    if( notifi[0] != null )
+    {
+      console.log("entro");
+      for(i = 0; i < size(notifi) ; i++){
+        if(notifi[i].product.quantity > 0){
+          check = true;
+        }
+      }
+      if(check){
+        setNoti(notifi);
+        setVisible(true);
+        console.log(notifi);
+      }
+    }
+  }
   if(visible)
   { 
     let i;

@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react'
 import { StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
-import { Title, Avatar, Card, IconButton,Text  } from 'react-native-paper';
+import { Title, Avatar, Card, IconButton  } from 'react-native-paper';
 import colors from '../../style/colors';
 import { size } from "lodash"
 import { useNavigation, useFocusEffect } from "@react-navigation/native";

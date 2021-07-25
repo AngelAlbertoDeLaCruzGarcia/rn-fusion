@@ -37,7 +37,8 @@
           "color": "#ffffff",
           "mode": "production"
         }
-      ]
+      ],
+      "expo-image-picker"
     ]
   }
 }

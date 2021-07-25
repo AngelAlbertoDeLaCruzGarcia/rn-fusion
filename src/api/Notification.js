@@ -21,14 +21,14 @@ export async function AddNotificationApi(auth, idProd){
         return null;
     }
 }
-export async function GetNotificationApi(auth,signal){
+export async function GetNotificationApi(token, idUser, signal){
     try {
-        const url = `${API_URL}/notifications?user=${auth.idUser}`;
+        const url = `${API_URL}/notifications?user=${idUser}`;
         const params = {
             signal,
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${auth.token}`,
+                Authorization: `Bearer ${token}`,
             },
         };
         const response = await fetch(url,params);

@@ -35,7 +35,8 @@ export default function ChangeName() {
         onSubmit: async (formData) => {
             setLoading(true);            
             try {
-                await updateUserApi(auth,formData);
+                const response = await updateUserApi(auth,formData);
+                console.log(response);
                 nav.goBack();
             } catch (error) {
                 onToggleSnackBar();

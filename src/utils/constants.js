@@ -1,5 +1,5 @@
-export const API_URL = "http://192.168.0.5:1337";
-//export const API_URL = "https://strapi-fusion.herokuapp.com";
+///export const API_URL = "http://192.168.0.5:1337";
+export const API_URL = "https://strapi-fusion.herokuapp.com";
 export const TOKEN = "token";
 export const SEARCH_HISTORY = "searchHistory";
 export const CART = "Cart";

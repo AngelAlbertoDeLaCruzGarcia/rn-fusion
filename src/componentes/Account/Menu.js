@@ -1,4 +1,3 @@
-import { color } from 'jimp'
 import React from 'react'
 import { View, Alert, StyleSheet } from 'react-native'
 import {List} from "react-native-paper"

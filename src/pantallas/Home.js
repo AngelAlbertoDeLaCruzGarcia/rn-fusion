@@ -5,6 +5,7 @@ import Search from '../componentes/Search'
 import Products from '../componentes/Home/Products'
 import Banners from '../componentes/Home/Banners';
 import colors from "../style/colors"
+
 export default function Home() {
     return (
         <>

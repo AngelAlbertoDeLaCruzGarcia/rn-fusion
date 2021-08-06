@@ -7,7 +7,6 @@ import AuthContext from "./src/context/AuthContext";
 import { setTokenApi, getTokenApi,removeTokenApi } from "./src/api/Token";
 import { size } from 'lodash';
 import { GetNotificationApi, DeleteNotificationApi, sendPushNotification, registerForPushNotificationsAsync } from "./src/api/Notification";
-import Notification from './src/componentes/Notification';
 import AppNavigation from './src/Navigation/AppNavigation'; 
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
@@ -40,8 +39,9 @@ export default function App() {
         });
       }else
         setAuth(null);
+      if(token)
+        setInterval(() => {searchNoti(token,jwtDecode(token).id)},10000)
       controller.abort();
-      setInterval(() => {searchNoti(token,jwtDecode(token).id)},10000)
       registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
       // This listener is fired whenever a notification is received while the app is foregrounded
       notificationListener.current = Notifications.addNotificationReceivedListener(notification => {

@@ -21,6 +21,7 @@
     },
     "android": {
       "package": "com.fusionw.fusion",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/Logo.png",
         "backgroundColor": "#000000"

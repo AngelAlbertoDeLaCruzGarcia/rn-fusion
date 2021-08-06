@@ -17,12 +17,14 @@ export default function Notification(props) {
         setVisible(!visible) 
         setMsg(dato);
     };
+    const onDismissSnackBar = () => setVisible(false);
+
     const AddNoti = async() => {
         setLoading(true);
         try {
             const response = await AddNotificationApi(auth, product._id);
             if(response != null){
-                const dato = "Error, intente de nuevo";
+                const dato = "Exito";
                 onToggleSnackBar(dato);
             }
 
